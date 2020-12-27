@@ -1,4 +1,4 @@
-import { ServiceBusService, createServiceBusService } from "azure-sb";
+import { ServiceBusService, createServiceBusService, Azure } from "azure-sb";
 
 // Load the .env file if it exists
 import * as dotenv from "dotenv";
@@ -14,17 +14,17 @@ async function main(): Promise<void> {
     queueName,
     {
       body: JSON.stringify({
-        From: "8174800796",
-        CustomField: "2020-12-18'T'23:05:00.000Z" + "_" + "ONLINE",
-        doctorId: "62f680b1-8e3e-4550-944a-4e9929a4ff6f",
-        appointmentId: "56df86a1-8e3e-4250-943a-78as168116fa",
-        messageType: "IVR_CALL",
+        From: "8080808080",
+        CustomField: "2020-08-08'T'08:08:08.080Z" + "_" + "ONLINE",
+        doctorId: "08f080f8-8080-8880-808a-8080808080fabc",
+        appointmentId: "09f090f9-9090-9990-909a-9090909090fabc",
+        messageType: "ABC_CALL",
       }),
       brokerProperties: {
-        ScheduledEnqueueTimeUtc: "2020-12-27'T'01:45:00.000Z",
+        ScheduledEnqueueTimeUtc: "2020-08-08'T'08:08:08.080Z",
       },
     },
-    (err, res) => {
+    (err: Error, res: Azure.ServiceBus.Response) => {
       console.log(err);
       console.log(res);
     }
