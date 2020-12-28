@@ -13,6 +13,7 @@ async function main(): Promise<void> {
   sbService.sendQueueMessage(
     queueName,
     {
+      // Message that looks similar to what was provided in the snippet
       body: JSON.stringify({
         From: "8080808080",
         CustomField: "2020-08-08'T'08:08:08.080Z" + "_" + "ONLINE",

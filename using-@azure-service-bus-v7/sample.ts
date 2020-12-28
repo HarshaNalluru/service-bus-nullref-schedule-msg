@@ -10,6 +10,8 @@ async function main(): Promise<void> {
   const queueName = process.env.QUEUE_NAME;
   const sender = sbService.createSender(queueName);
   const message = {
+    // Message that looks similar to what was provided in the snippet without the "JSON.stringify()" call
+    // (Removed the "JSON.stringify()" call on the body as that would be done by the SDK for the messages that are not of buffer type)
     body: {
       From: "8080808080",
       CustomField: "2020-08-08'T'08:08:08.080Z" + "_" + "ONLINE",
