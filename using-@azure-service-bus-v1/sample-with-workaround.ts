@@ -1,4 +1,5 @@
 import { ServiceBusClient } from "@azure/service-bus";
+import { DefaultDataTransformer } from "@azure/amqp-common";
 
 // Load the .env file if it exists
 import * as dotenv from "dotenv";
@@ -12,8 +13,9 @@ async function main(): Promise<void> {
   const queueName = process.env.QUEUE_NAME;
   const queueClient = sbService.createQueueClient(queueName);
   const sender = queueClient.createSender();
+  const dt = new DefaultDataTransformer();
   const message = {
-    body: JSON.stringify({
+    body: dt.encode({
       From: "8080808080",
       CustomField: "2020-08-08'T'08:08:08.080Z" + "_" + "ONLINE",
       doctorId: "08f080f8-8080-8880-808a-8080808080fabc",
