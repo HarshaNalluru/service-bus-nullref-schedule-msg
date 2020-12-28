@@ -20,10 +20,11 @@ async function main(): Promise<void> {
     messageType: "ABC_CALL",
     scheduledEnqueueTimeUtc: "2020-08-08'T'08:08:08.080Z",
   };
-  await sender.scheduleMessages(
-    [{ body: message.body }],
+  const sequenceNumbers = await sender.scheduleMessages(
+    [{ body: message.body, subject: "@azure/service-bus-v7" }],
     message.scheduledEnqueueTimeUtc as any
   );
+  console.log(sequenceNumbers[0].toNumber());
   await sbService.close();
 }
 

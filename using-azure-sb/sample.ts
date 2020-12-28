@@ -22,6 +22,7 @@ async function main(): Promise<void> {
       }),
       brokerProperties: {
         ScheduledEnqueueTimeUtc: "2020-08-08'T'08:08:08.080Z",
+        Label: "azure-sb",
       },
     },
     (err: Error, res: Azure.ServiceBus.Response) => {
