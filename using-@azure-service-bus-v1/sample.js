@@ -1,10 +1,12 @@
 const { ServiceBusClient } = require("@azure/service-bus");
 
 async function main() {
+  // Set SERVICEBUS_CONNECTION_STRING environment variable before running the sample
   const connectionStringASB = process.env.SERVICEBUS_CONNECTION_STRING;
   const sbService = ServiceBusClient.createFromConnectionString(
     connectionStringASB
   );
+  // Set QUEUE_NAME environment variable before running the sample
   const queueName = process.env.QUEUE_NAME;
   const queueClient = sbService.createQueueClient(queueName);
   const sender = queueClient.createSender();
